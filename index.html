@@ -27,7 +27,7 @@ const DATA=[{"id": "title", "name": "올해의 타이틀", "tab": "올해의 타
 const PREVIEW=false, START=Date.parse('2026-11-28T00:00:00+09:00'), END=Date.parse('2026-12-07T00:00:00+09:00'), KEY='sca-2026-live-browser-v1';
 const $=id=>document.getElementById(id);let state={days:{}},active=0,selected=-1,count=3,last=null,day=dayKey(),modal=false;
 function dayKey(){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}
-const BACKEND={url:'https://xbnvmumznjgiazgzdhsr.supabase.co',key:'sb_publishable_AK29jm0IV2d0AxnLeG8Qzw_CxgNdrC_'};
+const BACKEND={url:'https://gwurlyglebodlewhdbqo.supabase.co',key:'sb_publishable_jA7eajbn-02Z24RnCigxIQ_Lxj0zEDJ'};
 let browserId,ready=false,busy=false,globalTotal=0,globalResults={},offset=0,pending=null,storageOK=true;
 try{browserId=localStorage.getItem(KEY);if(!browserId){browserId=crypto.randomUUID();localStorage.setItem(KEY,browserId)}pending=JSON.parse(localStorage.getItem(KEY+'-pending')||'null')}catch{storageOK=false;}
 async function rpc(name,args){const r=await fetch(BACKEND.url+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:BACKEND.key,'Content-Type':'application/json'},body:JSON.stringify(args)});if(!r.ok){let e=await r.json().catch(()=>({}));let err=new Error(e.message||'HTTP '+r.status);err.definitive=r.status>=400&&r.status<500;throw err}return r.json()}
